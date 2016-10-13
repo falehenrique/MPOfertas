@@ -17,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E3D9EAB1DAF2494006A5694 /* MPOfertas.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MPOfertas.entitlements; sourceTree = "<group>"; };
 		4E78A4D01DAEB96F008EAE80 /* MPOfertas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPOfertas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E78A4D31DAEB96F008EAE80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E78A4D51DAEB96F008EAE80 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 		4E78A4D21DAEB96F008EAE80 /* MPOfertas */ = {
 			isa = PBXGroup;
 			children = (
+				4E3D9EAB1DAF2494006A5694 /* MPOfertas.entitlements */,
 				4E78A4E71DAEBE61008EAE80 /* controllers */,
 				4E78A4D31DAEB96F008EAE80 /* AppDelegate.swift */,
 				4E78A4D51DAEB96F008EAE80 /* FirstViewController.swift */,
@@ -110,7 +112,13 @@
 				TargetAttributes = {
 					4E78A4CF1DAEB96F008EAE80 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = T9VUHG6RU2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -276,11 +284,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MPOfertas/MPOfertas.entitlements;
+				DEVELOPMENT_TEAM = T9VUHG6RU2;
 				INFOPLIST_FILE = MPOfertas/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mercadopago.MPOfertas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -288,11 +299,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MPOfertas/MPOfertas.entitlements;
+				DEVELOPMENT_TEAM = T9VUHG6RU2;
 				INFOPLIST_FILE = MPOfertas/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mercadopago.MPOfertas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -315,6 +329,7 @@
 				4E78A4E61DAEB96F008EAE80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

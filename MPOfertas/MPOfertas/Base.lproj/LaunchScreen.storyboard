@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,12 +18,37 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_friday_icon" translatesAutoresizingMaskIntoConstraints="NO" id="4PO-u8-8J2">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="STp-8Q-BS0"/>
+                                    <constraint firstAttribute="height" constant="425" id="zJG-6L-WSk"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="mercado_pago_brand" translatesAutoresizingMaskIntoConstraints="NO" id="RuO-1s-9bB">
+                                <frame key="frameInset" minX="68" minY="580" width="238" height="67"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.13725490196078433" green="0.59999999999999998" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="RuO-1s-9bB" secondAttribute="bottom" constant="20" id="6uI-1c-Inc"/>
+                            <constraint firstItem="4PO-u8-8J2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9Ce-3q-f0z"/>
+                            <constraint firstItem="RuO-1s-9bB" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="50" id="HYY-09-n9W"/>
+                            <constraint firstItem="4PO-u8-8J2" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="OxX-fl-fkQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RuO-1s-9bB" secondAttribute="trailing" constant="50" id="RKN-AH-hOB"/>
+                            <constraint firstItem="4PO-u8-8J2" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="k1m-a6-cNP"/>
+                            <constraint firstItem="RuO-1s-9bB" firstAttribute="top" secondItem="4PO-u8-8J2" secondAttribute="bottom" constant="155" id="l0u-U3-bel"/>
+                            <constraint firstItem="4PO-u8-8J2" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="mBK-dz-qiI"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="black_friday_icon" width="640" height="837"/>
+        <image name="mercado_pago_brand" width="480" height="144"/>
+    </resources>
 </document>
