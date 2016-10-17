@@ -1,26 +1,17 @@
 //
-//  BasicTableViewCell.swift
+//  CategoryViewCell.swift
 //  MPOfertas
 //
-//  Created by Henrique Goncalves Leite on 12/10/16.
+//  Created by Henrique Goncalves Leite on 14/10/16.
 //  Copyright © 2016 Mercado Pago. All rights reserved.
 //
 
 import UIKit
 
-class BasicTableViewCell: UITableViewCell {
+class CategoryViewCell: UITableViewCell {
 
-    @IBOutlet var photo: UIImageView!
-    
-    @IBOutlet var coupon: UILabel!
-    
-    @IBOutlet var product: UILabel!
-    
-    @IBOutlet var value: UILabel!
-    
-    @IBOutlet var discount: UILabel!
-    
-    @IBOutlet var totalValue: UILabel!
+    @IBOutlet var cellCategoryText: UILabel!
+    @IBOutlet var cellCategoryID: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

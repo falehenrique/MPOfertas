@@ -25,9 +25,7 @@
                                     <constraint firstAttribute="height" constant="425" id="zJG-6L-WSk"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="mercado_pago_brand" translatesAutoresizingMaskIntoConstraints="NO" id="RuO-1s-9bB">
-                                <frame key="frameInset" minX="68" minY="580" width="238" height="67"/>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mercado_pago_brand" translatesAutoresizingMaskIntoConstraints="NO" id="RuO-1s-9bB"/>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490196078433" green="0.59999999999999998" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
