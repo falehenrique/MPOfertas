@@ -49,10 +49,29 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                         let field = json["results"] as! [[String:Any]]
                         
                         for object in field {
-                            self.values.append(object["preco"]! as! Float)
-                            self.products.append(object["nickname"]! as! String)
-                            self.discounts.append(object["desconto"]! as! NSNumber)
-                            self.totalValues.append(object["preco"]! as! Float)
+                            if object["preco"] != nil {
+                                 self.values.append(object["preco"]! as! Float)
+                            } else {
+                                self.values.append(0)
+                            }
+
+                            if object["nickname"] != nil {
+                                self.products.append(object["nickname"]! as! String)
+                            } else {
+                                self.products.append("")
+                            }
+
+                            if object["desconto"] != nil {
+                                self.discounts.append(object["desconto"]! as! NSNumber)
+                            } else {
+                                self.discounts.append(0)
+                            }
+
+                            if object["preco"] != nil {
+                                self.totalValues.append(object["preco"]! as! Float)
+                            } else {
+                                self.totalValues.append(0)
+                            }
                             
                             print(object["link_produto"]!)
                             //                        } else {
@@ -78,8 +97,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         })
         task.resume()
     }
-    
-    
     
     func loadTable() {
         
