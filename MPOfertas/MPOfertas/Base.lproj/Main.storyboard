@@ -11,7 +11,7 @@
         <!--First View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="MPOfertas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="paginaProdutos" id="9pv-A4-QxB" customClass="FirstViewController" customModule="MPOfertas" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -41,6 +41,9 @@
                                             <constraint firstAttribute="height" constant="25" id="sqH-Qt-ii0"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="white_menu"/>
+                                        <connections>
+                                            <segue destination="Gaf-PF-Zcr" kind="show" id="iuk-pU-OSE"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.61176470589999998" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -196,12 +199,12 @@ OFF</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-891" y="-2"/>
+            <point key="canvasLocation" x="602" y="443"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="bxH-ek-53z">
             <objects>
-                <viewController id="Gaf-PF-Zcr" sceneMemberID="viewController">
+                <viewController id="Gaf-PF-Zcr" customClass="MenuViewController" customModule="MPOfertas" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="J1P-8S-Vxw"/>
                         <viewControllerLayoutGuide type="bottom" id="7Ch-1c-u5W"/>
@@ -275,15 +278,17 @@ OFF</string>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ino-Ea-fmf">
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="45" placeholderIntrinsicHeight="45" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cX2-uF-6EA">
-                                                <frame key="frameInset" width="40" height="45"/>
+                                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="45" placeholderIntrinsicHeight="45" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cX2-uF-6EA">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="45" id="7Sh-Hm-ZtY"/>
+                                                    <constraint firstAttribute="height" constant="45" id="Pyj-H1-W1o"/>
+                                                </constraints>
                                                 <state key="normal" title="Button" image="category"/>
                                                 <connections>
                                                     <segue destination="8rJ-Kc-sve" kind="show" id="cSN-54-hTJ"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Categorias" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="db9-Pi-bdY">
-                                                <frame key="frameInset" minX="50" width="107" height="45"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categorias" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="db9-Pi-bdY">
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -293,6 +298,10 @@ OFF</string>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PnI-VL-JrR">
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="45" placeholderIntrinsicHeight="45" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxn-5J-r1M">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="45" id="P92-Vh-iNG"/>
+                                                    <constraint firstAttribute="height" constant="45" id="eEH-jz-Am1"/>
+                                                </constraints>
                                                 <state key="normal" title="Button" image="add_friend"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indique um amigo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwQ-sh-Y0c">
@@ -312,7 +321,6 @@ OFF</string>
                                     <constraint firstItem="EMc-Uw-S1o" firstAttribute="centerX" secondItem="6VE-le-P3W" secondAttribute="centerX" id="UVZ-dg-KT2"/>
                                     <constraint firstItem="XDO-IW-9v4" firstAttribute="centerX" secondItem="6VE-le-P3W" secondAttribute="centerX" id="V8L-0R-6nD"/>
                                     <constraint firstItem="BsE-2P-z53" firstAttribute="leading" secondItem="6VE-le-P3W" secondAttribute="leading" constant="5" id="cPM-Ap-Mdq"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ino-Ea-fmf" secondAttribute="trailing" constant="115" id="i9f-So-hYZ"/>
                                     <constraint firstItem="Ino-Ea-fmf" firstAttribute="top" secondItem="XDO-IW-9v4" secondAttribute="bottom" constant="76" id="lLF-li-JGy"/>
                                     <constraint firstItem="XDO-IW-9v4" firstAttribute="top" secondItem="6VE-le-P3W" secondAttribute="top" constant="20" id="n8k-ks-cBK"/>
                                     <constraint firstItem="EMc-Uw-S1o" firstAttribute="top" secondItem="zSQ-RZ-xsk" secondAttribute="bottom" constant="57" id="o4n-eR-uTj"/>
@@ -332,10 +340,14 @@ OFF</string>
                             <constraint firstItem="6VE-le-P3W" firstAttribute="top" secondItem="0nl-Hx-sQd" secondAttribute="top" id="yqX-Qa-y5W"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnCadastro" destination="OIY-0v-lOv" id="aaA-tb-Ctl"/>
+                        <outlet property="btnSobre" destination="zSQ-RZ-xsk" id="Wvz-5Y-SPU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fD2-sG-6de" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-191.25" y="-813.38028169014081"/>
+            <point key="canvasLocation" x="195" y="-648"/>
         </scene>
         <!--Detalhe Produto View Controller-->
         <scene sceneID="VtL-cJ-s4X">
@@ -406,7 +418,7 @@ OFF</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ibb-dn-qeg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1581" y="824"/>
+            <point key="canvasLocation" x="-227" y="1203"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="wg7-f3-ORb">
@@ -454,7 +466,7 @@ OFF</string>
                                 </constraints>
                                 <state key="normal" title="Button" image="white_back"/>
                                 <connections>
-                                    <segue destination="9pv-A4-QxB" kind="show" id="nmw-Lf-2pg"/>
+                                    <segue destination="9pv-A4-QxB" kind="show" id="0Zl-Wk-XYU"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8hE-hE-vzt">
@@ -496,7 +508,7 @@ OFF</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="632" y="-2"/>
+            <point key="canvasLocation" x="-1043" y="43"/>
         </scene>
         <!--Delegate-->
         <scene sceneID="ZcL-Re-T7w">
@@ -559,7 +571,7 @@ OFF</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5AB-Xn-1PU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1905" y="-2"/>
+            <point key="canvasLocation" x="-2098" y="443"/>
         </scene>
         <!--Sobre View Controller-->
         <scene sceneID="sk1-6S-kRM">
@@ -595,6 +607,9 @@ OFF</string>
                                     <constraint firstAttribute="height" constant="25" id="l7k-kU-Nf1"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="white_back"/>
+                                <connections>
+                                    <segue destination="9pv-A4-QxB" kind="show" id="eIm-b2-tjK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490196078433" green="0.61176470588235299" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
@@ -619,7 +634,7 @@ OFF</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q4d-7E-i2B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1531.875" y="-610.56338028169012"/>
+            <point key="canvasLocation" x="1532" y="-499"/>
         </scene>
         <!--Cadastro View Controller-->
         <scene sceneID="eGw-hg-dF0">
@@ -655,6 +670,9 @@ OFF</string>
                                     <constraint firstAttribute="height" constant="25" id="NWp-DG-pAs"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="white_back"/>
+                                <connections>
+                                    <segue destination="9pv-A4-QxB" kind="show" id="iA3-jI-q7K"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490196078433" green="0.61176470588235299" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
@@ -680,38 +698,6 @@ OFF</string>
             </objects>
             <point key="canvasLocation" x="1531.875" y="-1317.2535211267607"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="mH3-cG-QpO">
-            <objects>
-                <viewController id="PYU-ct-b4y" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="IQE-uh-JeG"/>
-                        <viewControllerLayoutGuide type="bottom" id="53n-hE-ktw"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8uj-qu-VP2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KUB-sU-PqN">
-                                <color key="backgroundColor" red="0.13725490200000001" green="0.61176470589999998" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="KUB-sU-PqN" secondAttribute="height" multiplier="15:8" id="asf-07-asi"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="KUB-sU-PqN" firstAttribute="leading" secondItem="8uj-qu-VP2" secondAttribute="leadingMargin" id="7rM-PG-fnA"/>
-                            <constraint firstItem="KUB-sU-PqN" firstAttribute="top" secondItem="8uj-qu-VP2" secondAttribute="topMargin" id="9Ch-kb-HCp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KUB-sU-PqN" secondAttribute="trailing" id="KdZ-go-eAP"/>
-                            <constraint firstItem="KUB-sU-PqN" firstAttribute="centerX" secondItem="8uj-qu-VP2" secondAttribute="centerX" id="vgT-BV-W40"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6D1-vD-orA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2602" y="-2"/>
-        </scene>
     </scenes>
     <resources>
         <image name="add_friend" width="512" height="512"/>
@@ -727,7 +713,7 @@ OFF</string>
         <image name="white_menu" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rbK-SS-0fI"/>
+        <segue reference="BWQ-FU-VjY"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.13725490196078433" green="0.59999999999999998" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -10,8 +10,6 @@ import UIKit
 
 class SecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
-    @IBOutlet weak var btnSobre: UIButton!
-    @IBOutlet weak var btnCadastro: UIButton!
     var valuesID = Array<String>()
     var names = Array<String>()
 
@@ -21,10 +19,6 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        // Altera contorno das imagens
-        btnSobre.layer.cornerRadius = 10.0
-        btnCadastro.layer.cornerRadius = 10.0
         
         let config = URLSessionConfiguration.default // Session Configuration
         let session = URLSession(configuration: config) // Load configuration into Session
