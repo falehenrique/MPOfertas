@@ -10,18 +10,25 @@ import UIKit
 
 class SecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
-    @IBOutlet var buttonCadastre: UIButton!
-    @IBOutlet var buttonSobreMercadoPago: UIButton!
-    var valuesID = Array<NSNumber>()
+    @IBOutlet weak var btnSobre: UIButton!
+    @IBOutlet weak var btnCadastro: UIButton!
+    var valuesID = Array<String>()
     var names = Array<String>()
 
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        // Altera contorno das imagens
+        btnSobre.layer.cornerRadius = 10.0
+        btnCadastro.layer.cornerRadius = 10.0
+        
         let config = URLSessionConfiguration.default // Session Configuration
         let session = URLSession(configuration: config) // Load configuration into Session
-        let url = URL(string: "https://mpblackfriday.herokuapp.com/app_categorias")!
+        let url = URL(string: "http://api.mp-ofertas.melifrontends.com/app_categorias")!
         
         let task = session.dataTask(with: url, completionHandler: {
             (data, response, error) in
@@ -41,7 +48,10 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
                         let field = json["results"] as! [[String:Any]]
                         
                         for object in field {
-                            self.valuesID.append(object["id_categoria"]! as! NSNumber)
+                            print(object["id_categoria"])
+                            print(object["nome_categoria"])
+                            
+                            self.valuesID.append(object["id_categoria"]! as! String)
                             self.names.append(object["nome_categoria"]! as! String)
                         }
                         print(self.valuesID)
@@ -59,19 +69,19 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
             
         })
         task.resume()
-        formatView()
     }
 
-    func formatView() {
-        buttonSobreMercadoPago.layer.cornerRadius = 5
-        buttonSobreMercadoPago.layer.borderWidth = 1
-        buttonSobreMercadoPago.layer.borderColor  = UIColor.white.cgColor
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let cell = tableView.cellForRow(at: indexPath)
         
-        buttonCadastre.layer.cornerRadius = 5
-        buttonCadastre.layer.borderWidth = 1
-        buttonCadastre.layer.borderColor  = UIColor.white.cgColor
-        //buttonSobreMercadoPago.layer.borderColor = UIColor.black.cgColor
+        if cell == nil {
+            return
+        }
+        
+        cell!.accessoryType = UITableViewCellAccessoryType.checkmark
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -92,17 +102,10 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! CategoryViewCell
         
-        cell.cellCategoryID.text = String(describing: valuesID[indexPath.row])
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        
-        // create attributed string
-        let myString = names[indexPath.row]
-        let myAttribute = [ NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue ]
-        let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
-        
-        cell.cellCategoryText.attributedText = myAttrString
+        cell.textLabel?.text = names[indexPath.row]
         
         
         return cell

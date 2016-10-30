@@ -12,24 +12,31 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet var tableView: UITableView!
     
-    var photos = [String: UIImage]()
+    var link_imagens = [String]()
+
+    var link_produtos = [String]()
+
+    var link_lojas = [String]()
     
-    var coupons = ["1234", "5677"]
+    var destaques = [String]()
+
+    var produtos = [String]()
     
-    var products = [String]()
+    var cupons = [String]()
     
-    var values = [Float]()
+    var precos = [Float]()
     
-    var totalValues = [Float]()
+    var valores_finais = [String]()
     
-    var discounts = [NSNumber]()
+    var descontos = [NSNumber]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let config = URLSessionConfiguration.default // Session Configuration
         let session = URLSession(configuration: config) // Load configuration into Session
-        let url = URL(string: "https://mpblackfriday.herokuapp.com/app_produtos")!
+        let url = URL(string: "http://api.mp-ofertas.melifrontends.com/app_produtos")!
         
         let task = session.dataTask(with: url, completionHandler: {
             (data, response, error) in
@@ -50,39 +57,64 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                         
                         for object in field {
                             if object["preco"] != nil {
-                                 self.values.append(object["preco"]! as! Float)
+                                 self.precos.append(object["preco"]! as! Float)
                             } else {
-                                self.values.append(0)
+                                self.precos.append(0)
                             }
-
-                            if object["nickname"] != nil {
-                                self.products.append(object["nickname"]! as! String)
+          
+                            if object["link_loja"] !=  nil {
+                                self.link_lojas.append(object["link_loja"] as! String)
                             } else {
-                                self.products.append("")
+                                self.link_lojas.append("categoria-compracerta-logo")
+                            }
+                            
+                           
+                            if object["link_imagem"] !=  nil {
+                                 self.link_imagens.append(object["link_imagem"]! as! String)
+                            } else {
+                               self.link_imagens.append("noimage")
+                            }
+                            
+                            
+                            if object["link_produto"] != nil {
+                                self.link_produtos.append(object["link_produto"]! as! String)
+                            } else {
+                                self.link_produtos.append("http://www.google.com.br")
+                            }
+                            
+                            if object["nickname"] != nil {
+                                self.produtos.append(object["nickname"]! as! String)
+                            } else {
+                                self.produtos.append("")
                             }
 
                             if object["desconto"] != nil {
-                                self.discounts.append(object["desconto"]! as! NSNumber)
+                                self.descontos.append(object["desconto"]! as! NSNumber)
                             } else {
-                                self.discounts.append(0)
+                                self.descontos.append(0)
                             }
 
-                            if object["preco"] != nil {
-                                self.totalValues.append(object["preco"]! as! Float)
+                            if object["valor_final"] != nil {
+                                self.valores_finais.append(object["valor_final"]! as! String)
                             } else {
-                                self.totalValues.append(0)
+                                self.valores_finais.append("")
+                            }
+
+                            if object["is_destaque"] != nil {
+                                self.destaques.append(object["is_destaque"]! as! String)
+                            } else {
+                                self.destaques.append("")
+                            }
+
+                            if object["cupom"] != nil {
+                                self.cupons.append(object["cupom"]! as! String)
+                            } else {
+                                self.cupons.append("")
                             }
                             
                             print(object["link_produto"]!)
-                            //                        } else {
-                            //                            let image = UIImage()
-                            //                            self.photos.append(image)
-                            //                        }
-                            
                             
                         }
-                        print(self.products)
-                        print(self.discounts)
                     }
                     
                     self.loadTable()
@@ -112,34 +144,60 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return values.count
+        return produtos.count
     }
     
-    
+   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BasicTableViewCell
+        let cellDestaque = self.tableView.dequeueReusableCell(withIdentifier: "cellHighlighted", for: indexPath) as! HighlightedCellTableViewCell
         
-        //cell.photo.image = photos[indexPath.row]
-        cell.coupon.text = coupons[indexPath.row]
+        if destaques[indexPath.row] == "N" {
+            cellDestaque.imagemDestaque.isHidden = true
+        }
+
+        cellDestaque.imagemProduto.downloadedFrom(link: link_imagens[indexPath.row])
+            
+        cellDestaque.cupom.text = cupons[indexPath.row]
+            
+        cellDestaque.produto.text = produtos[indexPath.row]
+
+        cellDestaque.valor_final.text = "R$ " + String(describing: valores_finais[indexPath.row])
         
-        
-        cell.product.text = products[indexPath.row]
-        //cell.value.text = String(values[indexPath.row])
-        
-        // create attributed string
-        let myString = "R$ " + String(values[indexPath.row])
-        let myAttribute = [ NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue ]
-        let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
-        
-        cell.value.attributedText = myAttrString
+        cellDestaque.btnVerOferta.layer.cornerRadius = 10.0
     
-        cell.totalValue.text = "R$ " + String(describing: totalValues[indexPath.row])
+        cellDestaque.viewCinza.layer.cornerRadius = 10.0
         
-        cell.discount.text = String(describing: discounts[indexPath.row]) + "%" +  "\n" +
-            "OFF"
-    
-        return cell
+        cellDestaque.desconto.text = String(describing: descontos[indexPath.row]) + "%" +  "\n" +
+        "OFF"
         
+        
+        return cellDestaque
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 245.0
+    }
+    
+    
 }
 
+extension UIImageView {
+    func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() { () -> Void in
+                self.image = image
+            }
+            }.resume()
+    }
+    func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+        guard let url = URL(string: link) else { return }
+        downloadedFrom(url: url, contentMode: mode)
+    }
+}

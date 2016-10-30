@@ -19,29 +19,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_friday_icon" translatesAutoresizingMaskIntoConstraints="NO" id="4PO-u8-8J2">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="425" id="XC6-pW-cky"/>
-                                    <constraint firstAttribute="width" constant="343" id="ZKc-aQ-MYY"/>
-                                </constraints>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mercado_pago_brand" translatesAutoresizingMaskIntoConstraints="NO" id="x66-qA-8xs">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="146" id="S2X-Bx-E4a"/>
                                     <constraint firstAttribute="height" constant="36" id="yIA-gC-Sw6"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_friday_icon" translatesAutoresizingMaskIntoConstraints="NO" id="4PO-u8-8J2">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="313" id="NQe-y8-8kS"/>
+                                    <constraint firstAttribute="height" constant="394" id="wfl-Qc-Tgp"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.13725490196078433" green="0.59999999999999998" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="4PO-u8-8J2" secondAttribute="trailing" id="0qR-Hd-Wtv"/>
-                            <constraint firstItem="x66-qA-8xs" firstAttribute="top" secondItem="4PO-u8-8J2" secondAttribute="bottom" constant="158" id="3PE-yC-D2L"/>
+                            <constraint firstItem="4PO-u8-8J2" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="7hi-Qz-1ca"/>
                             <constraint firstItem="x66-qA-8xs" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="98" id="A34-1s-wdh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="x66-qA-8xs" secondAttribute="trailing" constant="99" id="AoP-4c-tRC"/>
                             <constraint firstItem="x66-qA-8xs" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="YrD-VH-lQP"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="x66-qA-8xs" secondAttribute="bottom" constant="20" id="chA-pR-eF5"/>
-                            <constraint firstItem="4PO-u8-8J2" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="32" id="eVV-I6-ghv"/>
-                            <constraint firstItem="4PO-u8-8J2" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="8" id="vqB-XD-Aho"/>
+                            <constraint firstItem="4PO-u8-8J2" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="y16-j9-24Y"/>
+                            <constraint firstItem="4PO-u8-8J2" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="30" id="yW8-s8-Qgs"/>
                         </constraints>
                     </view>
                 </viewController>
