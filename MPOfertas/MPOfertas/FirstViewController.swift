@@ -179,7 +179,12 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "paginaDetalheProduto", sender: self)
+    }
+    
 }
+
 
 extension UIImageView {
     func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
