@@ -10,13 +10,11 @@ import UIKit
 
 class DetalheProdutoViewController: UIViewController {
     
-    var URLPath = "http://www.casaamerica.com.br/moveis/sala-de-estar/poltrona/"
-    
-    @IBOutlet var webView: UIWebView!
+    @IBOutlet weak var webView: UIWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadAdressURL()
+        configureView()
         // Do any additional setup after loading the view.
     }
     
@@ -25,11 +23,9 @@ class DetalheProdutoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func loadAdressURL() {
-        
-        print("entrou aqui")
-        
-        let requestURL = URL(string: URLPath)
+    func configureView() {
+
+        let requestURL = URL(string: self.urlProduto!)
         if let urlTeste = requestURL {
             let request = URLRequest(url: urlTeste)
             webView.loadRequest(request)
@@ -39,6 +35,13 @@ class DetalheProdutoViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
         
+    }
+    
+    var urlProduto: String? {
+        didSet {
+            // Update the view.
+            self.configureView()
+        }
     }
     
 }

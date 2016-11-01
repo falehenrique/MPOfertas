@@ -8,7 +8,9 @@
 
 import UIKit
 
-class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ProdutosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var navItem: UINavigationItem!
     
     @IBOutlet var tableView: UITableView!
     
@@ -31,12 +33,26 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     var descontos = [NSNumber]()
     
     
+    func setNavItem() {
+        
+        let attrs = [
+            NSFontAttributeName: UIFont(name: "Helvetica-Bold", size: 20)!
+        ]
+        
+        UINavigationBar.appearance().titleTextAttributes = attrs
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //setNavItem()
+        
+        //tableView.setContentOffset(CGPoint.zero, animated: true)
+        
         let config = URLSessionConfiguration.default // Session Configuration
         let session = URLSession(configuration: config) // Load configuration into Session
-        let url = URL(string: "http://api.mp-ofertas.melifrontends.com/app_produtos")!
+        let url = URL(string: "https://mpblackfriday.herokuapp.com/app_produtos")!
         
         let task = session.dataTask(with: url, completionHandler: {
             (data, response, error) in
@@ -65,7 +81,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                             if object["link_loja"] !=  nil {
                                 self.link_lojas.append(object["link_loja"] as! String)
                             } else {
-                                self.link_lojas.append("categoria-compracerta-logo")
+                                self.link_lojas.append("noimage")
                             }
                             
                            
@@ -156,16 +172,63 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
 
         cellDestaque.imagemProduto.downloadedFrom(link: link_imagens[indexPath.row])
+        
+        if cupons[indexPath.row] == "" {
+            cellDestaque.cupom.isHidden = true
+        } else {
+            let coupon = cupons[indexPath.row]
+            let textCoupon = "Use o cupom \(coupon)"
             
-        cellDestaque.cupom.text = cupons[indexPath.row]
+
+            let myMutableString = NSMutableAttributedString(
+                string: textCoupon,
+                attributes: [NSFontAttributeName:UIFont(
+                    name: "Helvetica",
+                    size: 11.0)!])
+            
+            myMutableString.addAttribute(NSFontAttributeName,
+                                         value: UIFont(
+                                            name: "Helvetica-Bold",
+                                            size: 15.0)!,
+                                         range: NSRange(
+                                            location: 12,
+                                            length: coupon.characters.count ))
+
+            /*myMutableString.addAttribute(
+                NSStrokeColorAttributeName,
+                value: UIColor.orange,
+                range:  NSRange(
+                    location: 12,
+                    length: 10))*/
+
+            myMutableString.addAttribute(
+                NSStrokeColorAttributeName,
+                value: UIColor.black,
+                range: NSRange(
+                    location: 12,
+                    length: coupon.characters.count))
+            
+
+            cellDestaque.cupom.attributedText = myMutableString
+        }
+
             
         cellDestaque.produto.text = produtos[indexPath.row]
 
-        cellDestaque.valor_final.text = "R$ " + String(describing: valores_finais[indexPath.row])
+        print("valor final = " + valores_finais[indexPath.row])
+        
+        if valores_finais[indexPath.row] == "0.00" {
+            cellDestaque.valor_final.isHidden = true
+        } else {
+            cellDestaque.valor_final.text = "R$ " + String(describing: valores_finais[indexPath.row])
+        }
+        
         
         cellDestaque.btnVerOferta.layer.cornerRadius = 10.0
     
         cellDestaque.viewCinza.layer.cornerRadius = 10.0
+        
+        cellDestaque.imagemProduto.layer.cornerRadius = 10.0;
         
         cellDestaque.desconto.text = String(describing: descontos[indexPath.row]) + "%" +  "\n" +
         "OFF"
@@ -175,9 +238,26 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 245.0
+        return 240.0
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "paginaDetalheProduto" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let link_produto = link_produtos[indexPath.row]
+                
+                let controller = segue.destination as! DetalheProdutoViewController
+                
+                print("link do produto = \(link_produtos)")
+                
+                controller.urlProduto = link_produto as String?
+                
+                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
+                controller.navigationItem.leftItemsSupplementBackButton = true
+                
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "paginaDetalheProduto", sender: self)

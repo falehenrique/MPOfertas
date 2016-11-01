@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class CategoriasViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
     var valuesID = Array<String>()
     var names = Array<String>()
@@ -22,7 +22,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         
         let config = URLSessionConfiguration.default // Session Configuration
         let session = URLSession(configuration: config) // Load configuration into Session
-        let url = URL(string: "http://api.mp-ofertas.melifrontends.com/app_categorias")!
+        let url = URL(string: "https://mpblackfriday.herokuapp.com/app_categorias")!
         
         let task = session.dataTask(with: url, completionHandler: {
             (data, response, error) in
@@ -42,14 +42,11 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
                         let field = json["results"] as! [[String:Any]]
                         
                         for object in field {
-                            print(object["id_categoria"])
-                            print(object["nome_categoria"])
+                            //self.valuesID.append(object["id_categoria"]! as! String)
+                            self.valuesID.append("1")
                             
-                            self.valuesID.append(object["id_categoria"]! as! String)
                             self.names.append(object["nome_categoria"]! as! String)
                         }
-                        print(self.valuesID)
-                        print(self.names)
                     }
                     
                     self.loadTable()
